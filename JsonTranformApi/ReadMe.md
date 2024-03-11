@@ -10,8 +10,12 @@ The API require both the template parameter and a JSON array in order to work pr
 -Change directory by usine "**cd <codepath>\JsonTranformApi**", if the code was place in "code" directory then you must type "**cd \code\JsonTranformApi**".  You should see that the prompt will also shows directory your on.
 -type "dotnet build --configuration Release" and press enter.  If you have encounter an "Invalid Commandline" error, you probably are using an ordinary command prompt, please retry all steps again
 
-## Running the Test Component
-This component requires the Test or the API component to run.
+## Building API Container
+A Docker file was created by Visual studio to facilitate the creation of the docker container.
+-Open *Visual Studio Command Prompt* with Administrator Privilage (to ensure you wont have issues)
+-On the Command Prompt, change your current drive by typeing the driver letter and press enter
+-Change directory by usine "**cd <codepath>\JsonTranformApi**", if the code was place in "code" directory then you must type "**cd \code\JsonTranformApi**".  You should see that the prompt will also shows directory your on.
+-type "docker build -t **<tag>** ." and press enter.  If you have encounter an "Invalid Commandline" error, you probably are using an ordinary command prompt, please retry all steps again.  
 
 ## Design Decisions
 The service was created to contain all the processing required to transform a json element to a template formated string.
