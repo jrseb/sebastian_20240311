@@ -11,6 +11,7 @@ namespace JsonTransformLibrary.services
 		private const string TEMPLATE_END_TAG = @"</template-row>";
 		private const string TEMPLATE_PREFIX = @"field-";
 
+
 		/// <summary>
 		/// Driving procedure to complete the output
 		/// </summary>

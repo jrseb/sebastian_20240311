@@ -34,17 +34,26 @@ namespace JsonTranformApi.Controllers
 		[HttpPost(Name = "TransformJson")]
 		public IActionResult ConvertToTemplate([FromBody] object[] jsonRecords, string template)
 		{
-			var recs = jsonRecords.ToImmutableList();
-			List<JsonElement> items = new();
-			recs.ForEach(rec => items.Add((JsonElement)rec));
-
-			if (_transform.ValidateParameters(items.ToImmutableList(), template))
+			try
 			{
-				var result = _transform.JsonToTemplate(items.ToImmutableList(), template, 10);
-				return Ok(result);
+				var recs = jsonRecords.ToImmutableList();
+				List<JsonElement> items = new();
+				recs.ForEach(rec => items.Add((JsonElement)rec));
+
+
+				if (_transform.ValidateParameters(items.ToImmutableList(), template))
+				{
+					var result = _transform.JsonToTemplate(items.ToImmutableList(), template, 10);
+					return Ok(result);
+				}
+				else
+					return NotFound("Template/Tags or json element is empty");
 			}
-			else
-				return NotFound("Template/Tags or json element is empty");
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.InnerException, ex.Message);
+				throw;
+			}
 		}
 	}
 }
